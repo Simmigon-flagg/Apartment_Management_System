@@ -15,6 +15,7 @@ public class StartGUI extends javax.swing.JFrame {
      * Creates new form StartGUI
      */
     public StartGUI() {
+        this.setAlwaysOnTop(true);
         initComponents();
     }
 
@@ -41,7 +42,7 @@ public class StartGUI extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Apartment Managment System");
+        setTitle("Apartment Management System");
         setMinimumSize(new java.awt.Dimension(1076, 513));
         setPreferredSize(new java.awt.Dimension(1090, 550));
         setResizable(false);
