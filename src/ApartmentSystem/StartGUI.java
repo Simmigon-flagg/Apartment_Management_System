@@ -44,7 +44,6 @@ public class StartGUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Apartment Management System");
         setMinimumSize(new java.awt.Dimension(1076, 513));
-        setPreferredSize(new java.awt.Dimension(1090, 550));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -182,8 +181,6 @@ public class StartGUI extends javax.swing.JFrame {
         getContentPane().add(jPanel3);
         jPanel3.setBounds(10, 71, 1056, 366);
 
-        jPanel1.setBackground(new java.awt.Color(255, 102, 0));
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -251,7 +248,7 @@ public class StartGUI extends javax.swing.JFrame {
         }
         //</editor-fold>
         try {
-            Thread.sleep(0);
+            Thread.sleep(3000);
         } catch (Exception e) {
         }
         /* Create and display the form */
