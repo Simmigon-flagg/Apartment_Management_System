@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package ApartmentSystem;
-
+import java.util.Date;
 /**
  *
  * @author Simmigon Flagg
@@ -13,10 +13,23 @@ public class StartGUI extends javax.swing.JFrame {
 
     /**
      * Creates new form StartGUI
-     */
+     */Date date;
     public StartGUI() {
         this.setAlwaysOnTop(true);
         initComponents();
+        
+        new Thread() {
+            public void run() {
+                while (true) {
+                     date = new Date();
+                    String[] time = date.toString().split(" ");
+                    //lblSystemClock.setText();
+                    lblSystemClock.setText(time[0] + " " + time[1] + " " + time[2] + " " + time[5] + " " + time[3]);
+                    
+                }
+            }
+        }.start();
+
     }
 
     /**
@@ -38,12 +51,13 @@ public class StartGUI extends javax.swing.JFrame {
         jPanel5 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
+        lblSystemClock = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Apartment Management System");
-        setMinimumSize(new java.awt.Dimension(1076, 513));
+        setMinimumSize(new java.awt.Dimension(1076, 550));
         setResizable(false);
         getContentPane().setLayout(null);
 
@@ -181,15 +195,24 @@ public class StartGUI extends javax.swing.JFrame {
         getContentPane().add(jPanel3);
         jPanel3.setBounds(10, 71, 1056, 366);
 
+        lblSystemClock.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblSystemClock.setText("ddd mmm ##:##:##");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1056, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblSystemClock)
+                .addContainerGap(813, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 54, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(lblSystemClock)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel1);
@@ -248,7 +271,7 @@ public class StartGUI extends javax.swing.JFrame {
         }
         //</editor-fold>
         try {
-            Thread.sleep(3000);
+            Thread.sleep(5);
         } catch (Exception e) {
         }
         /* Create and display the form */
@@ -272,5 +295,6 @@ public class StartGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JLabel lblSystemClock;
     // End of variables declaration//GEN-END:variables
 }
