@@ -4,28 +4,40 @@
  * and open the template in the editor.
  */
 package ApartmentSystem;
+
+import java.awt.CardLayout;
+import java.awt.Panel;
+import java.awt.PopupMenu;
+import java.awt.Toolkit;
 import java.util.Date;
+import javax.swing.JPanel;
+
 /**
  *
  * @author Simmigon Flagg
  */
 public class StartGUI extends javax.swing.JFrame {
 
+    //public String theCardPanel = null;
     /**
      * Creates new form StartGUI
-     */Date date;
+     */
+   
+
     public StartGUI() {
-        this.setAlwaysOnTop(true);
+      
         initComponents();
-        
+        setOurImage();
+
+
         new Thread() {
             public void run() {
                 while (true) {
-                     date = new Date();
+                    Date date = new Date();
                     String[] time = date.toString().split(" ");
                     //lblSystemClock.setText();
                     lblSystemClock.setText(time[0] + " " + time[1] + " " + time[2] + " " + time[5] + " " + time[3]);
-                    
+
                 }
             }
         }.start();
@@ -41,169 +53,144 @@ public class StartGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel3 = new javax.swing.JPanel();
-        jPanel10 = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        lblSystemClock = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        panelButton = new javax.swing.JPanel();
+        btnHome = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        btnLookupTenants = new javax.swing.JButton();
+        cardParent = new javax.swing.JPanel();
+        PanelLookUp = new ApartmentSystem.LookUpApplicant();
+        Home = new ApartmentSystem.Home();
+        jPanel1 = new javax.swing.JPanel();
+        lblSystemClock = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Apartment Management System");
+        setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(1076, 550));
         setResizable(false);
         getContentPane().setLayout(null);
 
-        jPanel3.setBackground(new java.awt.Color(0, 51, 51));
-        jPanel3.setLayout(new java.awt.CardLayout());
+        panelButton.setBackground(new java.awt.Color(102, 102, 102));
 
-        jPanel10.setBackground(new java.awt.Color(0, 255, 255));
-        jPanel10.setOpaque(false);
+        btnHome.setText("Home");
+        btnHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHomeActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1056, Short.MAX_VALUE)
+        jButton2.setText("jButton1");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("jButton1");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("jButton1");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jButton5.setText("jButton1");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+
+        jButton6.setText("jButton1");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+
+        jButton7.setText("jButton1");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+
+        btnLookupTenants.setText("Look Up Tenants");
+        btnLookupTenants.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLookupTenantsActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelButtonLayout = new javax.swing.GroupLayout(panelButton);
+        panelButton.setLayout(panelButtonLayout);
+        panelButtonLayout.setHorizontalGroup(
+            panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelButtonLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnHome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 390, Short.MAX_VALUE)
+                .addComponent(btnLookupTenants)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton5)
+                .addContainerGap())
         );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 366, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel10, "card2");
-
-        jPanel11.setBackground(new java.awt.Color(204, 0, 0));
-        jPanel11.setOpaque(false);
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1056, Short.MAX_VALUE)
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 366, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel11, "card2");
-
-        jPanel9.setBackground(new java.awt.Color(0, 204, 0));
-        jPanel9.setOpaque(false);
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1056, Short.MAX_VALUE)
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 366, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel9, "card2");
-
-        jPanel8.setBackground(new java.awt.Color(0, 0, 204));
-        jPanel8.setOpaque(false);
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1056, Short.MAX_VALUE)
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 366, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel8, "card2");
-
-        jPanel7.setBackground(new java.awt.Color(153, 0, 0));
-        jPanel7.setOpaque(false);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1056, Short.MAX_VALUE)
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 366, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel7, "card2");
-
-        jPanel6.setBackground(new java.awt.Color(0, 204, 0));
-        jPanel6.setOpaque(false);
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1056, Short.MAX_VALUE)
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 366, Short.MAX_VALUE)
-        );
-
-        jPanel3.add(jPanel6, "card2");
-
-        jPanel5.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel5.setOpaque(false);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1056, Short.MAX_VALUE)
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 366, Short.MAX_VALUE)
+        panelButtonLayout.setVerticalGroup(
+            panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelButtonLayout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addGroup(panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnLookupTenants)
+                        .addComponent(jButton7)
+                        .addComponent(jButton6)
+                        .addComponent(jButton5))
+                    .addGroup(panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton3)
+                        .addComponent(jButton4))
+                    .addGroup(panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnHome)
+                        .addComponent(jButton2)))
+                .addContainerGap())
         );
 
-        jPanel3.add(jPanel5, "card2");
+        getContentPane().add(panelButton);
+        panelButton.setBounds(10, 443, 1056, 59);
 
-        jPanel4.setBackground(new java.awt.Color(255, 102, 0));
-        jPanel4.setOpaque(false);
+        cardParent.setBackground(new java.awt.Color(0, 51, 51));
+        cardParent.setLayout(new java.awt.CardLayout());
+        cardParent.add(PanelLookUp, "Panel Look up");
+        cardParent.add(Home, "Home");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1056, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 366, Short.MAX_VALUE)
-        );
+        getContentPane().add(cardParent);
+        cardParent.setBounds(10, 71, 1053, 366);
 
-        jPanel3.add(jPanel4, "card2");
-
-        getContentPane().add(jPanel3);
-        jPanel3.setBounds(10, 71, 1056, 366);
+        jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
         lblSystemClock.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        lblSystemClock.setForeground(new java.awt.Color(255, 255, 255));
         lblSystemClock.setText("ddd mmm ##:##:##");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -226,68 +213,6 @@ public class StartGUI extends javax.swing.JFrame {
         getContentPane().add(jPanel1);
         jPanel1.setBounds(10, 11, 1056, 54);
 
-        jPanel2.setBackground(new java.awt.Color(255, 51, 204));
-
-        jButton1.setText("jButton1");
-
-        jButton2.setText("jButton1");
-
-        jButton3.setText("jButton1");
-
-        jButton4.setText("jButton1");
-
-        jButton5.setText("jButton1");
-
-        jButton6.setText("jButton1");
-
-        jButton7.setText("jButton1");
-
-        jButton8.setText("jButton1");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 416, Short.MAX_VALUE)
-                .addComponent(jButton8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(25, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jButton3)
-                        .addComponent(jButton4)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton8)
-                            .addComponent(jButton7)
-                            .addComponent(jButton6)
-                            .addComponent(jButton5))))
-                .addContainerGap())
-        );
-
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(10, 443, 1056, 59);
-
         jLabel1.setBackground(new java.awt.Color(0, 51, 204));
         jLabel1.setForeground(new java.awt.Color(0, 0, 153));
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ApartmentSystem/Texture-Background-Wallpaper.jpg"))); // NOI18N
@@ -297,6 +222,47 @@ public class StartGUI extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
+
+          CardLayout showCardPanel = (CardLayout)cardParent.getLayout();
+        showCardPanel.show(cardParent, "Home");
+    }//GEN-LAST:event_btnHomeActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void btnLookupTenantsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLookupTenantsActionPerformed
+        CardLayout showCardPanel = (CardLayout)cardParent.getLayout();
+        showCardPanel.show(cardParent, "Panel Look up");
+    }//GEN-LAST:event_btnLookupTenantsActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
+    public void switchToCard(JPanel theCardPanel) {
+      //  cardParent.removeAll();
+        //  cardParent.add(theCardPanel);
+        //  cardParent.repaint();
+        //  cardParent.revalidate();
+    }
 
     /**
      * @param args the command line arguments
@@ -335,28 +301,24 @@ public class StartGUI extends javax.swing.JFrame {
             }
         });
     }
-
+private void setOurImage(){
+    this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.jpg")));
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private ApartmentSystem.Home Home;
+    private ApartmentSystem.LookUpApplicant PanelLookUp;
+    private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnLookupTenants;
+    private javax.swing.JPanel cardParent;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
     private javax.swing.JLabel lblSystemClock;
+    private javax.swing.JPanel panelButton;
     // End of variables declaration//GEN-END:variables
 }
