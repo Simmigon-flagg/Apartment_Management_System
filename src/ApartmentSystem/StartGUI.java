@@ -77,6 +77,7 @@ public class StartGUI extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         panelButton.setBackground(new java.awt.Color(102, 102, 102));
+        panelButton.setOpaque(false);
 
         btnHome.setText("Home");
         btnHome.addActionListener(new java.awt.event.ActionListener() {
@@ -147,7 +148,7 @@ public class StartGUI extends javax.swing.JFrame {
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 390, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(btnLookupTenants)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton7)
@@ -157,6 +158,9 @@ public class StartGUI extends javax.swing.JFrame {
                 .addComponent(jButton5)
                 .addContainerGap())
         );
+
+        panelButtonLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnHome, btnLookupTenants, jButton2, jButton3, jButton4, jButton5, jButton6, jButton7});
+
         panelButtonLayout.setVerticalGroup(
             panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelButtonLayout.createSequentialGroup()
@@ -180,14 +184,20 @@ public class StartGUI extends javax.swing.JFrame {
         panelButton.setBounds(10, 443, 1056, 59);
 
         cardParent.setBackground(new java.awt.Color(0, 51, 51));
+        cardParent.setOpaque(false);
         cardParent.setLayout(new java.awt.CardLayout());
+
+        PanelLookUp.setOpaque(false);
         cardParent.add(PanelLookUp, "Panel Look up");
+
+        Home.setOpaque(false);
         cardParent.add(Home, "Home");
 
         getContentPane().add(cardParent);
         cardParent.setBounds(10, 71, 1053, 366);
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
+        jPanel1.setOpaque(false);
 
         lblSystemClock.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         lblSystemClock.setForeground(new java.awt.Color(255, 255, 255));
