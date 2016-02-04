@@ -14,6 +14,9 @@
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="windowOpened" listener="java.awt.event.WindowListener" parameters="java.awt.event.WindowEvent" handler="formWindowOpened"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
@@ -175,20 +178,14 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
-        <Component class="ApartmentSystem.LookUpApplicant" name="PanelLookUp">
-          <Properties>
-            <Property name="opaque" type="boolean" value="false"/>
-          </Properties>
+        <Component class="ApartmentSystem.LookUp" name="lookUpTenant">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="Panel Look up"/>
+              <CardConstraints cardName="Look up"/>
             </Constraint>
           </Constraints>
         </Component>
-        <Component class="ApartmentSystem.Home" name="Home">
-          <Properties>
-            <Property name="opaque" type="boolean" value="false"/>
-          </Properties>
+        <Component class="ApartmentSystem.Home" name="home">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="Home"/>

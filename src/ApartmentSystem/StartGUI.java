@@ -5,12 +5,17 @@
  */
 package ApartmentSystem;
 
+import com.mysql.jdbc.MySQLConnection;
 import java.awt.CardLayout;
 import java.awt.Panel;
 import java.awt.PopupMenu;
 import java.awt.Toolkit;
 import java.util.Date;
 import javax.swing.JPanel;
+import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import jdk.internal.dynalink.support.Lookup;
 
 /**
  *
@@ -18,17 +23,15 @@ import javax.swing.JPanel;
  */
 public class StartGUI extends javax.swing.JFrame {
 
-    //public String theCardPanel = null;
+   // Connection conn = null;
+
     /**
      * Creates new form StartGUI
      */
-   
-
     public StartGUI() {
-      
+
         initComponents();
         setOurImage();
-
 
         new Thread() {
             public void run() {
@@ -63,8 +66,8 @@ public class StartGUI extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         btnLookupTenants = new javax.swing.JButton();
         cardParent = new javax.swing.JPanel();
-        PanelLookUp = new ApartmentSystem.LookUpApplicant();
-        Home = new ApartmentSystem.Home();
+        lookUpTenant = new ApartmentSystem.LookUp();
+        home = new ApartmentSystem.Home();
         jPanel1 = new javax.swing.JPanel();
         lblSystemClock = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -74,6 +77,11 @@ public class StartGUI extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setMinimumSize(new java.awt.Dimension(1076, 550));
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
         getContentPane().setLayout(null);
 
         panelButton.setBackground(new java.awt.Color(102, 102, 102));
@@ -186,12 +194,8 @@ public class StartGUI extends javax.swing.JFrame {
         cardParent.setBackground(new java.awt.Color(0, 51, 51));
         cardParent.setOpaque(false);
         cardParent.setLayout(new java.awt.CardLayout());
-
-        PanelLookUp.setOpaque(false);
-        cardParent.add(PanelLookUp, "Panel Look up");
-
-        Home.setOpaque(false);
-        cardParent.add(Home, "Home");
+        cardParent.add(lookUpTenant, "Look up");
+        cardParent.add(home, "Home");
 
         getContentPane().add(cardParent);
         cardParent.setBounds(10, 71, 1053, 366);
@@ -235,7 +239,7 @@ public class StartGUI extends javax.swing.JFrame {
 
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
 
-          CardLayout showCardPanel = (CardLayout)cardParent.getLayout();
+        CardLayout showCardPanel = (CardLayout) cardParent.getLayout();
         showCardPanel.show(cardParent, "Home");
     }//GEN-LAST:event_btnHomeActionPerformed
 
@@ -252,8 +256,11 @@ public class StartGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void btnLookupTenantsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLookupTenantsActionPerformed
-        CardLayout showCardPanel = (CardLayout)cardParent.getLayout();
-        showCardPanel.show(cardParent, "Panel Look up");
+
+        CardLayout showCardPanel = (CardLayout) cardParent.getLayout();
+        showCardPanel.show(cardParent, "Look up");
+        LookUp.txtArea.setText(null);
+       
     }//GEN-LAST:event_btnLookupTenantsActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -267,12 +274,11 @@ public class StartGUI extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
-    public void switchToCard(JPanel theCardPanel) {
-      //  cardParent.removeAll();
-        //  cardParent.add(theCardPanel);
-        //  cardParent.repaint();
-        //  cardParent.revalidate();
-    }
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        // TODO add your handling code here:
+        //  conn = Database.DatabaseConn();
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
@@ -311,15 +317,15 @@ public class StartGUI extends javax.swing.JFrame {
             }
         });
     }
-private void setOurImage(){
-    this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.jpg")));
-}
+
+    private void setOurImage() {
+        this.setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("icon.jpg")));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private ApartmentSystem.Home Home;
-    private ApartmentSystem.LookUpApplicant PanelLookUp;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnLookupTenants;
     private javax.swing.JPanel cardParent;
+    private ApartmentSystem.Home home;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -329,6 +335,7 @@ private void setOurImage(){
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblSystemClock;
+    private ApartmentSystem.LookUp lookUpTenant;
     private javax.swing.JPanel panelButton;
     // End of variables declaration//GEN-END:variables
 }
