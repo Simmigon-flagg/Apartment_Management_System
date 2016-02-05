@@ -178,17 +178,17 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
-        <Component class="ApartmentSystem.LookUp" name="lookUpTenant">
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
-              <CardConstraints cardName="Look up"/>
-            </Constraint>
-          </Constraints>
-        </Component>
         <Component class="ApartmentSystem.Home" name="home">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="Home"/>
+            </Constraint>
+          </Constraints>
+        </Component>
+        <Component class="ApartmentSystem.LookUp" name="lookUpTenant">
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
+              <CardConstraints cardName="Look up"/>
             </Constraint>
           </Constraints>
         </Component>

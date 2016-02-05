@@ -66,8 +66,8 @@ public class StartGUI extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         btnLookupTenants = new javax.swing.JButton();
         cardParent = new javax.swing.JPanel();
-        lookUpTenant = new ApartmentSystem.LookUp();
         home = new ApartmentSystem.Home();
+        lookUpTenant = new ApartmentSystem.LookUp();
         jPanel1 = new javax.swing.JPanel();
         lblSystemClock = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -194,8 +194,8 @@ public class StartGUI extends javax.swing.JFrame {
         cardParent.setBackground(new java.awt.Color(0, 51, 51));
         cardParent.setOpaque(false);
         cardParent.setLayout(new java.awt.CardLayout());
-        cardParent.add(lookUpTenant, "Look up");
         cardParent.add(home, "Home");
+        cardParent.add(lookUpTenant, "Look up");
 
         getContentPane().add(cardParent);
         cardParent.setBounds(10, 71, 1053, 366);
