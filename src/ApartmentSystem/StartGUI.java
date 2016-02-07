@@ -24,7 +24,6 @@ import jdk.internal.dynalink.support.Lookup;
 public class StartGUI extends javax.swing.JFrame {
 
    // Connection conn = null;
-
     /**
      * Creates new form StartGUI
      */
@@ -61,7 +60,7 @@ public class StartGUI extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         btnLookupTenants = new javax.swing.JButton();
@@ -115,10 +114,10 @@ public class StartGUI extends javax.swing.JFrame {
             }
         });
 
-        jButton5.setText("jButton1");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btnLogoutActionPerformed(evt);
             }
         });
 
@@ -163,11 +162,11 @@ public class StartGUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton5)
+                .addComponent(btnLogout)
                 .addContainerGap())
         );
 
-        panelButtonLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnHome, btnLookupTenants, jButton2, jButton3, jButton4, jButton5, jButton6, jButton7});
+        panelButtonLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnHome, btnLogout, btnLookupTenants, jButton2, jButton3, jButton4, jButton6, jButton7});
 
         panelButtonLayout.setVerticalGroup(
             panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -178,7 +177,7 @@ public class StartGUI extends javax.swing.JFrame {
                         .addComponent(btnLookupTenants)
                         .addComponent(jButton7)
                         .addComponent(jButton6)
-                        .addComponent(jButton5))
+                        .addComponent(btnLogout))
                     .addGroup(panelButtonLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jButton3)
                         .addComponent(jButton4))
@@ -260,7 +259,7 @@ public class StartGUI extends javax.swing.JFrame {
         CardLayout showCardPanel = (CardLayout) cardParent.getLayout();
         showCardPanel.show(cardParent, "Look up");
         LookUp.txtArea.setText(null);
-       
+
     }//GEN-LAST:event_btnLookupTenantsActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -271,13 +270,20 @@ public class StartGUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+
+        CardLayout showCardPanel = (CardLayout) cardParent.getLayout();
+        showCardPanel.show(cardParent, "Home");
+        Home.panelLogin.setVisible(true);
+        
+        
+               // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         //  conn = Database.DatabaseConn();
+        panelButton.setVisible(false);
     }//GEN-LAST:event_formWindowOpened
 
     /**
@@ -323,19 +329,19 @@ public class StartGUI extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnHome;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnLookupTenants;
     private javax.swing.JPanel cardParent;
     private ApartmentSystem.Home home;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblSystemClock;
     private ApartmentSystem.LookUp lookUpTenant;
-    private javax.swing.JPanel panelButton;
+    public static javax.swing.JPanel panelButton;
     // End of variables declaration//GEN-END:variables
 }

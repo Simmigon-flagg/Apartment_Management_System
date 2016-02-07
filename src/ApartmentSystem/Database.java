@@ -41,10 +41,19 @@ public class Database {
         }
     }//end of database connection
 
+    public boolean Login(String name, String password) {
+        boolean login = false;
+        if ((name.equals("admin") && password.equals("admin"))) {
+            login = true;
+        }
+        return login;
+    }
+
     public ArrayList<Object> getTenant() {
         ArrayList<Object> tenant = new ArrayList<>();
 
-        sql = "SELECT * FROM applicant;";
+        sql = "SELECT * FROM applicant INNER JOIN "
+                + "          user ON applicant.idApplicant = user.idApplicant;";
 
         try {
 
@@ -53,9 +62,21 @@ public class Database {
             rs = dbStatement.executeQuery(sql);
 
             while (rs.next()) {
-                tenant.add(rs.getString("firstName"));
+                tenant.add(rs.getString("firstName").concat("\n"));
+                tenant.add(rs.getString("lastName").concat("\n"));
+                tenant.add(rs.getString("userName").concat("\n"));
+                tenant.add(rs.getString("dateOfBirth").concat("\n"));
+                tenant.add(rs.getString("password").concat("\n"));
+                tenant.add(rs.getString("socialSecurity").concat("\n"));
+                tenant.add(rs.getString("address").concat("\n"));
+                tenant.add(rs.getString("emailAddress").concat("\n"));
+                tenant.add(rs.getString("phoneNumber").concat("\n"));
+                tenant.add(rs.getString("employedBy").concat("\n"));
+                tenant.add(rs.getString("monthlyGrossPay").concat("\n"));
+                tenant.add(rs.getString("criminalBackgroundCheck").concat("\n"));
             }
-            
+            conn.close();
+
         } catch (Exception e) {
 
             System.out.println("getTenant: " + e);
