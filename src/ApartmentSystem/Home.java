@@ -5,6 +5,8 @@
  */
 package ApartmentSystem;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Simmigon Flagg
@@ -181,7 +183,17 @@ public class Home extends javax.swing.JPanel {
             StartGUI.panelButton.setVisible(true);
             panelLogin.setVisible(false);
             login = false;
+        }else{
+            //If password is wrong
+            if(txtPassword.getText() == null || txtUserName.getText() == null || 
+                    "".equals(txtPassword.getText()) || "".equals(txtUserName.getText())){
+                JOptionPane.showMessageDialog(panelLogin, "Psssword or login was blank.");
+            }else{
+                JOptionPane.showMessageDialog(panelLogin, "Psssword or login is incorrect.");
+            }
+            
         }
+        
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
