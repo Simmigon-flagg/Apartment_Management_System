@@ -52,8 +52,8 @@ public class Database {
     public ArrayList<Object> getTenant() {
         ArrayList<Object> tenant = new ArrayList<>();
 
-        sql = "SELECT * FROM applicant INNER JOIN "
-                + "          user ON applicant.idApplicant = user.idApplicant;";
+        sql = "SELECT * FROM applicanttable INNER JOIN usertable ON applicanttable.idApplicant = usertable.idApplicant\n"
+                + "							 INNER JOIN legacytable ON usertable.iduser = legacytable.iduser;";
 
         try {
 
@@ -74,6 +74,9 @@ public class Database {
                 tenant.add(rs.getString("employedBy").concat("\n"));
                 tenant.add(rs.getString("monthlyGrossPay").concat("\n"));
                 tenant.add(rs.getString("criminalBackgroundCheck").concat("\n"));
+                tenant.add(rs.getString("apartmentName").concat("\n"));
+                tenant.add(rs.getString("numberOfRooms").concat("\n"));
+                tenant.add(rs.getString("legacyAptNumber").concat("\n"));
             }
             conn.close();
 
