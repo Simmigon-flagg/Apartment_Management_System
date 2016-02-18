@@ -259,6 +259,7 @@ public class StartGUI extends javax.swing.JFrame {
         CardLayout showCardPanel = (CardLayout) cardParent.getLayout();
         showCardPanel.show(cardParent, "Look up");
         LookUp.txtArea.setText(null);
+        panelButton.setVisible(false);
 
     }//GEN-LAST:event_btnLookupTenantsActionPerformed
 

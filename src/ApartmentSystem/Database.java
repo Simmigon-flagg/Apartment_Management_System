@@ -11,7 +11,7 @@ package ApartmentSystem;
  */
 import java.sql.*;
 import java.util.ArrayList;
-
+//MVC Model 
 public class Database {
 
     Statement dbStatement = null;
@@ -21,11 +21,7 @@ public class Database {
 
     public static Connection DatabaseConn() {
         try {
-            /**
-             * $servername = "us-cdbr-azure-east-a.cloudapp.net"; $username =
-             * "b397f6ac809d08"; $password = "4131b78e89f4fa9"; $dbname =
-             * "ApartrmentRentalDB";
-             */
+
             Class.forName("com.mysql.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://"
                     + "us-cdbr-azure-east-a.cloudapp.net/"
@@ -49,12 +45,12 @@ public class Database {
         return login;
     }
 
-    public ArrayList<Object> getTenant() {
+    public ArrayList<Object> getTenant(String apartment) {
         ArrayList<Object> tenant = new ArrayList<>();
 
         sql = "SELECT * FROM applicanttable INNER JOIN usertable ON applicanttable.idApplicant = usertable.idApplicant\n"
-                + "							 INNER JOIN legacytable ON usertable.iduser = legacytable.iduser;";
-
+                + "							 INNER JOIN "+apartment+" ON usertable.iduser = "+apartment+".iduser;";
+        //SELECT onebedroom FROM pricelegacytable
         try {
 
             dbStatement = DatabaseConn().createStatement();
@@ -76,7 +72,7 @@ public class Database {
                 tenant.add(rs.getString("criminalBackgroundCheck").concat("\n"));
                 tenant.add(rs.getString("apartmentName").concat("\n"));
                 tenant.add(rs.getString("numberOfRooms").concat("\n"));
-                tenant.add(rs.getString("legacyAptNumber").concat("\n"));
+                tenant.add(rs.getString("aptNumber").concat("\n"));
             }
             conn.close();
 

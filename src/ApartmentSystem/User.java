@@ -9,6 +9,7 @@ package ApartmentSystem;
  *
  * @author Simmigon Flagg
  */
+//Mona
 public class User {
     
 }

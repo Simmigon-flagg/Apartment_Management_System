@@ -187,9 +187,9 @@ public class Home extends javax.swing.JPanel {
             //If password is wrong
             if(txtPassword.getText() == null || txtUserName.getText() == null || 
                     "".equals(txtPassword.getText()) || "".equals(txtUserName.getText())){
-                JOptionPane.showMessageDialog(panelLogin, "Psssword or login was blank.");
+                JOptionPane.showMessageDialog(this, "Psssword or login was blank.");
             }else{
-                JOptionPane.showMessageDialog(panelLogin, "Psssword or login is incorrect.");
+                JOptionPane.showMessageDialog(this, "Psssword or login is incorrect.");
             }
             
         }
