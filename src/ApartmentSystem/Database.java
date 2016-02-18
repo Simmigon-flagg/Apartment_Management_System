@@ -37,13 +37,7 @@ public class Database {
         }
     }//end of database connection
 
-    public boolean Login(String name, String password) {
-        boolean login = false;
-        if ((name.equals("admin") && password.equals("admin"))) {
-            login = true;
-        }
-        return login;
-    }
+
 
     public ArrayList<Object> getTenant(String apartment) {
         ArrayList<Object> tenant = new ArrayList<>();
@@ -84,4 +78,29 @@ public class Database {
         return tenant;
 
     }//end of getTenant
+    
+    public void LoginModel(){
+        sql = "SELECT userName, password FROM apartrmentrentaldb.applicanttable;";
+        try {
+
+            dbStatement = DatabaseConn().createStatement();
+
+            rs = dbStatement.executeQuery(sql);
+
+            while (rs.next()) {
+                
+                String name  =  rs.getString("userName").concat("\n");
+                
+               String password =  rs.getString("password").concat("\n");
+                          }
+            conn.close();
+
+        } catch (Exception e) {
+
+            System.out.println("getTenant: " + e);
+        }
+
+
+    }//End of Login
+    
 }

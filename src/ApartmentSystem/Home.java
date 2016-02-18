@@ -23,14 +23,7 @@ public class Home extends javax.swing.JPanel {
 
     }
 
-    public void LogIntoSystem(String name, String pass) {
-        Database signin = new Database();
-        //if the user name and password don't match login is false
-        if (signin.Login(name, pass)) {
-            login = true;
-        }
-    }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -176,7 +169,10 @@ public class Home extends javax.swing.JPanel {
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:\
+        View homeLogin = new View();
+        homeLogin.HomeLogin();
         //return true
+        /*
         LogIntoSystem(txtUserName.getText(), txtPassword.getText());
         
         if (login) {
@@ -193,7 +189,7 @@ public class Home extends javax.swing.JPanel {
             }
             
         }
-        
+        */
 
     }//GEN-LAST:event_btnLoginActionPerformed
 
@@ -211,7 +207,7 @@ public class Home extends javax.swing.JPanel {
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblUser;
     public static javax.swing.JPanel panelLogin;
-    private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtUserName;
+    public static javax.swing.JPasswordField txtPassword;
+    public static javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
 }
