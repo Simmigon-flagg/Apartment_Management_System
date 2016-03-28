@@ -12,6 +12,7 @@ package ApartmentSystem;
 import java.sql.*;
 import java.util.ArrayList;
 //MVC Model 
+
 public class Database {
 
     Statement dbStatement = null;
@@ -37,13 +38,11 @@ public class Database {
         }
     }//end of database connection
 
-
-
     public ArrayList<Object> getTenant(String apartment) {
         ArrayList<Object> tenant = new ArrayList<>();
 
         sql = "SELECT * FROM applicanttable INNER JOIN usertable ON applicanttable.idApplicant = usertable.idApplicant\n"
-                + "							 INNER JOIN "+apartment+" ON usertable.iduser = "+apartment+".iduser;";
+                + "							 INNER JOIN " + apartment + " ON usertable.iduser = " + apartment + ".iduser;";
         //SELECT onebedroom FROM pricelegacytable
         try {
 
@@ -78,29 +77,42 @@ public class Database {
         return tenant;
 
     }//end of getTenant
-    
-    public void LoginModel(){
+
+    public boolean LoginModel(String name,String password) {
         sql = "SELECT userName, password FROM apartrmentrentaldb.applicanttable;";
+        String vName = name;
+        String vPassword = password;
+         System.out.println("From String: "+vName.charAt(0)+ "From String: "+ vPassword);
+        boolean isLoggedIn = false; 
         try {
 
             dbStatement = DatabaseConn().createStatement();
 
             rs = dbStatement.executeQuery(sql);
+            String namedb = "";
 
+            String passworddb = "";
             while (rs.next()) {
-                
-                String name  =  rs.getString("userName").concat("\n");
-                
-               String password =  rs.getString("password").concat("\n");
-                          }
+
+                 namedb = rs.getString("userName").concat("\n");
+
+                 passworddb = rs.getString("password").concat("\n");
+            }
+            
+            
             conn.close();
+            System.out.println("From DB: "+namedb + "From DB" + passworddb);
+             System.out.println("From String: "+name+ "From String: "+ password);
+            if (vName.equals(namedb) && vPassword.equals(passworddb)) {
+                isLoggedIn = true;
+            }
 
         } catch (Exception e) {
 
-            System.out.println("getTenant: " + e);
+            System.out.println("LoginModel: " + e);
         }
 
-
+        return isLoggedIn;
     }//End of Login
-    
+
 }
