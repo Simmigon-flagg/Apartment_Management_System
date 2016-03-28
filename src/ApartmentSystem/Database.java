@@ -9,8 +9,12 @@ package ApartmentSystem;
  *
  * @author Simmigon Flagg
  */
+import java.awt.CardLayout;
+import java.awt.Panel;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
+import javax.smartcardio.Card;
 //MVC Model 
 
 public class Database {
@@ -78,41 +82,84 @@ public class Database {
 
     }//end of getTenant
 
-    public boolean LoginModel(String name,String password) {
+    public Object[] LoginModel(String name, String password) {
         sql = "SELECT userName, password FROM apartrmentrentaldb.applicanttable;";
-        String vName = name;
-        String vPassword = password;
-         System.out.println("From String: "+vName.charAt(0)+ "From String: "+ vPassword);
-        boolean isLoggedIn = false; 
+
+        Object[] namedb = null;
+
         try {
 
             dbStatement = DatabaseConn().createStatement();
 
             rs = dbStatement.executeQuery(sql);
-            String namedb = "";
 
-            String passworddb = "";
             while (rs.next()) {
 
-                 namedb = rs.getString("userName").concat("\n");
+                namedb[0] = rs.getString("idapartmentPrice").concat("\n");
+                namedb[1] = rs.getString("onebedroom").concat("\n");
+                namedb[2] = rs.getString("twobedroom").concat("\n");
+                namedb[3] = rs.getString("threebedroom").concat("\n");
 
-                 passworddb = rs.getString("password").concat("\n");
+                namedb[4] = rs.getString("apartmentName").concat("\n");
+                namedb[5] = rs.getString("onebedroom").concat("\n");
             }
-            
-            
+
             conn.close();
-            System.out.println("From DB: "+namedb + "From DB" + passworddb);
-             System.out.println("From String: "+name+ "From String: "+ password);
-            if (vName.equals(namedb) && vPassword.equals(passworddb)) {
-                isLoggedIn = true;
-            }
+            System.out.println("From DB: " + namedb);
 
         } catch (Exception e) {
 
             System.out.println("LoginModel: " + e);
         }
 
-        return isLoggedIn;
+        return namedb;
+    }//End of Login
+
+    public ArrayList<Object> Person() {
+        sql = "SELECT * FROM applicanttable;";
+        ArrayList<Object> person = new ArrayList<Object>();
+        try {
+
+            dbStatement = DatabaseConn().createStatement();
+
+            rs = dbStatement.executeQuery(sql);
+
+            while (rs.next()) {
+
+                Object idApplicant = rs.getInt("idApplicant");
+                Object firstName = rs.getString("firstName");
+                Object lastName = rs.getString("lastName");
+                Object userName = rs.getString("userName");
+                Object dateOfBirth = rs.getString("dateOfBirth");
+                Object password = rs.getString("password");
+                Object socialSecurity = rs.getString("socialSecurity");
+
+//                System.out.println(idApplicant + "\t" + firstName
+//                        + "\t" + lastName + "\t" + userName
+//                        + "\t" + dateOfBirth
+//                        + "\t" + password
+//                        + "\t" + socialSecurity);
+                
+                person.add(idApplicant);
+                person.add(firstName);
+                person.add(lastName);
+                person.add(userName);
+                person.add(dateOfBirth);
+                person.add(password);
+                person.add(socialSecurity);
+                
+                
+            }
+
+            conn.close();
+            //  System.out.println("From DB: " + Arrays.toString(namedb));
+
+        } catch (Exception e) {
+            System.out.println("Person: " + e);
+            return null;
+        }
+        return person;
+
     }//End of Login
 
 }
