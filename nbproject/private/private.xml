@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Simmigon%20Flagg/Documents/GitHub/Apartment_Management_System/src/ApartmentSystem/Person.java</file>
-            <file>file:/C:/Users/Simmigon%20Flagg/Documents/GitHub/Apartment_Management_System/src/ApartmentSystem/Login.java</file>
-            <file>file:/C:/Users/Simmigon%20Flagg/Documents/GitHub/Apartment_Management_System/src/ApartmentSystem/TestApartment.java</file>
+            <file>file:/C:/Users/Simmigon%20Flagg/Documents/GitHub/Apartment_Management_System/src/ApartmentSystem/ViewApplication.java</file>
+            <file>file:/C:/Users/Simmigon%20Flagg/Documents/GitHub/Apartment_Management_System/src/ApartmentSystem/ViewTenant.java</file>
+            <file>file:/C:/Users/Simmigon%20Flagg/Documents/GitHub/Apartment_Management_System/src/ApartmentSystem/appHome.java</file>
+            <file>file:/C:/Users/Simmigon%20Flagg/Documents/GitHub/Apartment_Management_System/src/ApartmentSystem/ViewLogin.java</file>
+            <file>file:/C:/Users/Simmigon%20Flagg/Documents/GitHub/Apartment_Management_System/src/ApartmentSystem/TestPerson.java</file>
         </group>
     </open-files>
 </project-private>
