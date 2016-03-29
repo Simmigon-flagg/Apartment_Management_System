@@ -11,10 +11,9 @@ import java.util.ArrayList;
  *
  * @author Simmigon Flagg
  */
-public class TestApartment {
-
+public class TestDatabase {
     static Database db = new Database();
-
+    
     public static void main(String[] args) {
         ArrayList<Object> Applicant = new ArrayList<Object>();
         Applicant = db.Person();
