@@ -1,0 +1,3 @@
+ApartmentSystem.Views
+ApartmentSystem.Model
+ApartmentSystem.appHome
