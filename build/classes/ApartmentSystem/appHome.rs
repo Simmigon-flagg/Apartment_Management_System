@@ -1,4 +1,0 @@
-ApartmentSystem.Views
-ApartmentSystem.Model
-ApartmentSystem.Controller
-ApartmentSystem.appHome
