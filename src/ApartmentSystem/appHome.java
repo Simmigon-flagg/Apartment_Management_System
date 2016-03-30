@@ -20,13 +20,12 @@ public class appHome extends javax.swing.JFrame {
 
     public void Controller() {
         Database data = new Database();
-      //  ViewLogin view = new ViewLogin();
+        //  ViewLogin view = new ViewLogin();
         if (true) {
       //      CardLayout cardView = (CardLayout)card.getLayout();
-       //     cardView.show(card, "card Application");
-           
+            //     cardView.show(card, "card Application");
+
         }
-       
 
     }
 
@@ -125,15 +124,15 @@ public class appHome extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-CardLayout showView =  (CardLayout)card.getLayout();
-       showView.show(card, "Tenant");        // TODO add your handling code here:
+        CardLayout showView = (CardLayout) card.getLayout();
+        showView.show(card, "Tenant");        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       CardLayout showView =  (CardLayout)card.getLayout();
-       showView.show(card, "Applicant");
-       
-        
+        CardLayout showView = (CardLayout) card.getLayout();
+        showView.show(card, "Applicant");
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -166,6 +165,8 @@ CardLayout showView =  (CardLayout)card.getLayout();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+
+               
                 new appHome().setVisible(true);
             }
         });
@@ -183,10 +184,3 @@ CardLayout showView =  (CardLayout)card.getLayout();
     // End of variables declaration//GEN-END:variables
 }
 
-class Model {
-}
-
-class Views {
-
-    Database data = new Database();
-}

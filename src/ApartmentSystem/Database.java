@@ -9,13 +9,8 @@ package ApartmentSystem;
  *
  * @author Simmigon Flagg
  */
-import java.awt.CardLayout;
-import java.awt.Panel;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import javax.smartcardio.Card;
-//MVC Model 
 
 public class Database {
 
@@ -42,12 +37,9 @@ public class Database {
         }
     }//end of database connection
 
-    public ArrayList<Object> getTenant(String apartment) {
-        ArrayList<Object> tenant = new ArrayList<>();
-
-        sql = "SELECT * FROM applicanttable INNER JOIN usertable ON applicanttable.idApplicant = usertable.idApplicant\n"
-                + "							 INNER JOIN " + apartment + " ON usertable.iduser = " + apartment + ".iduser;";
-        //SELECT onebedroom FROM pricelegacytable
+    public ArrayList<Object> getAllUser() {
+        sql = "SELECT * FROM user;";
+        ArrayList<Object> person = new ArrayList<>();
         try {
 
             dbStatement = DatabaseConn().createStatement();
@@ -55,111 +47,199 @@ public class Database {
             rs = dbStatement.executeQuery(sql);
 
             while (rs.next()) {
-                tenant.add(rs.getString("firstName").concat("\n"));
-                tenant.add(rs.getString("lastName").concat("\n"));
-                tenant.add(rs.getString("userName").concat("\n"));
-                tenant.add(rs.getString("dateOfBirth").concat("\n"));
-                tenant.add(rs.getString("password").concat("\n"));
-                tenant.add(rs.getString("socialSecurity").concat("\n"));
-                tenant.add(rs.getString("address").concat("\n"));
-                tenant.add(rs.getString("emailAddress").concat("\n"));
-                tenant.add(rs.getString("phoneNumber").concat("\n"));
-                tenant.add(rs.getString("employedBy").concat("\n"));
-                tenant.add(rs.getString("monthlyGrossPay").concat("\n"));
-                tenant.add(rs.getString("criminalBackgroundCheck").concat("\n"));
-                tenant.add(rs.getString("apartmentName").concat("\n"));
-                tenant.add(rs.getString("numberOfRooms").concat("\n"));
-                tenant.add(rs.getString("aptNumber").concat("\n"));
-            }
-            conn.close();
-
-        } catch (Exception e) {
-
-            System.out.println("getTenant: " + e);
-        }
-
-        return tenant;
-
-    }//end of getTenant
-
-    public Object[] LoginModel(String name, String password) {
-        sql = "SELECT userName, password FROM apartrmentrentaldb.applicanttable;";
-
-        Object[] namedb = null;
-
-        try {
-
-            dbStatement = DatabaseConn().createStatement();
-
-            rs = dbStatement.executeQuery(sql);
-
-            while (rs.next()) {
-
-                namedb[0] = rs.getString("idapartmentPrice").concat("\n");
-                namedb[1] = rs.getString("onebedroom").concat("\n");
-                namedb[2] = rs.getString("twobedroom").concat("\n");
-                namedb[3] = rs.getString("threebedroom").concat("\n");
-
-                namedb[4] = rs.getString("apartmentName").concat("\n");
-                namedb[5] = rs.getString("onebedroom").concat("\n");
+                person.add(rs.getInt("iduser"));
+                person.add(rs.getString("firstName"));
+                person.add(rs.getString("lastName"));
+                person.add(rs.getString("userName"));
+                person.add(rs.getString("dateOfBirth"));
+                person.add(rs.getString("pass"));
             }
 
             conn.close();
-            System.out.println("From DB: " + namedb);
 
         } catch (Exception e) {
-
-            System.out.println("LoginModel: " + e);
-        }
-
-        return namedb;
-    }//End of Login
-
-    public ArrayList<Object> Person() {
-        sql = "SELECT * FROM applicanttable;";
-        ArrayList<Object> person = new ArrayList<Object>();
-        try {
-
-            dbStatement = DatabaseConn().createStatement();
-
-            rs = dbStatement.executeQuery(sql);
-
-            while (rs.next()) {
-
-                Object idApplicant = rs.getInt("idApplicant");
-                Object firstName = rs.getString("firstName");
-                Object lastName = rs.getString("lastName");
-                Object userName = rs.getString("userName");
-                Object dateOfBirth = rs.getString("dateOfBirth");
-                Object password = rs.getString("password");
-                Object socialSecurity = rs.getString("socialSecurity");
-
-//                System.out.println(idApplicant + "\t" + firstName
-//                        + "\t" + lastName + "\t" + userName
-//                        + "\t" + dateOfBirth
-//                        + "\t" + password
-//                        + "\t" + socialSecurity);
-                
-                person.add(idApplicant);
-                person.add(firstName);
-                person.add(lastName);
-                person.add(userName);
-                person.add(dateOfBirth);
-                person.add(password);
-                person.add(socialSecurity);
-                
-                
-            }
-
-            conn.close();
-            //  System.out.println("From DB: " + Arrays.toString(namedb));
-
-        } catch (Exception e) {
-            System.out.println("Person: " + e);
+            System.out.println("getAllUser: " + e);
             return null;
         }
         return person;
 
-    }//End of Login
+    }//End of getAllUser
 
+    public ArrayList<Object> getAllLocationAndPrice() {
+        sql = "SELECT * FROM apartmentlocation;";
+        ArrayList<Object> apartment = new ArrayList<>();
+        try {
+
+            dbStatement = DatabaseConn().createStatement();
+
+            rs = dbStatement.executeQuery(sql);
+
+            while (rs.next()) {
+
+                apartment.add(rs.getInt("idapartmentlocation"));
+                apartment.add(rs.getInt("iduser"));
+                apartment.add(rs.getString("location"));
+                apartment.add(rs.getString("aptNumber"));
+                apartment.add(rs.getString("numberOfBedrooms"));
+                apartment.add(rs.getString("price"));
+            }
+
+            conn.close();
+
+        } catch (Exception e) {
+            System.out.println("getAllLocationAndPrice: " + e);
+            return null;
+        }
+        return apartment;
+
+    }//End of getAllLocationAndPrice
+
+    public ArrayList<Object> getAllApplicant() {
+        ArrayList<Object> applicant = new ArrayList<>();
+
+        sql = "SELECT * FROM applicant;";
+        try {
+
+            dbStatement = DatabaseConn().createStatement();
+
+            rs = dbStatement.executeQuery(sql);
+
+            while (rs.next()) {
+                applicant.add(rs.getInt("idapplicant"));
+                applicant.add(rs.getInt("iduser"));
+                applicant.add(rs.getInt("accepted"));
+                applicant.add(rs.getString("socialSecurity"));
+                applicant.add(rs.getString("streetAddress"));
+                applicant.add(rs.getString("City"));
+                applicant.add(rs.getString("Zip"));
+                applicant.add(rs.getString("phoneNumber"));
+                applicant.add(rs.getString("employedBy"));
+                applicant.add(rs.getString("JobTitle"));
+                applicant.add(rs.getString("monthlyGrossPay"));
+                applicant.add(rs.getString("criminalBackgroundCheck"));
+
+            }
+            conn.close();
+
+        } catch (Exception e) {
+
+            System.out.println("getAllApplicant: " + e);
+        }
+
+        return applicant;
+
+    }//end of getAllApplicant
+
+    public ArrayList<Object> getAlllApplication() {
+        ArrayList<Object> getAlllApplication = new ArrayList<>();
+
+        sql = "SELECT "
+                + "firstName,"
+                + "lastName,"
+                + "userName,"
+                + "dateOfBirth,"
+                + "pass,"
+                + "accepted,"
+                + "socialSecurity,"
+                + "streetAddress,"
+                + "City,"
+                + "Zip,"
+                + "phoneNumber,"
+                + "employedBy,"
+                + "JobTitle,\n"
+                + "monthlyGrossPay,"
+                + "criminalBackgroundCheck,"
+                + "location,"
+                + "aptNumber,"
+                + "numberOfBedrooms,"
+                + "price\n"
+                + "FROM user\n"
+                + "INNER JOIN applicant\n"
+                + "ON user.iduser=applicant.iduser\n"
+                + "INNER JOIN apartmentlocation\n"
+                + "ON applicant.iduser=apartmentlocation.iduser;";
+
+        try {
+
+            dbStatement = DatabaseConn().createStatement();
+
+            rs = dbStatement.executeQuery(sql);
+
+            while (rs.next()) {
+
+                getAlllApplication.add(rs.getString("firstName"));
+                getAlllApplication.add(rs.getString("lastName"));
+                getAlllApplication.add(rs.getString("userName"));
+                getAlllApplication.add(rs.getString("dateOfBirth"));
+                getAlllApplication.add(rs.getString("pass"));
+                getAlllApplication.add(rs.getString("accepted"));
+                getAlllApplication.add(rs.getString("socialSecurity"));
+                getAlllApplication.add(rs.getString("streetAddress"));
+                getAlllApplication.add(rs.getString("City"));
+                getAlllApplication.add(rs.getString("Zip"));
+                getAlllApplication.add(rs.getString("phoneNumber"));
+                getAlllApplication.add(rs.getString("employedBy"));
+                getAlllApplication.add(rs.getString("JobTitle"));
+                getAlllApplication.add(rs.getString("monthlyGrossPay"));
+                getAlllApplication.add(rs.getString("location"));
+                getAlllApplication.add(rs.getString("aptNumber"));
+                getAlllApplication.add(rs.getString("price"));
+
+            }
+
+            conn.close();
+
+        } catch (Exception e) {
+
+            System.out.println("getAlllApplication: " + e);
+        }
+
+        return getAlllApplication;
+    }//End of getAlllApplication
+
+    public Object[] isLogin(String email, String password) {
+        boolean isLogin = false;
+        Object[] user = new Object[2];
+        user[0] = isLogin;
+        sql = "SELECT userName,pass,firstName FROM user"
+                + " WHERE userName = \'" + email + "\'"
+                + " AND pass = \'" + password + "\';";
+
+        try {
+
+            dbStatement = DatabaseConn().createStatement();
+
+            rs = dbStatement.executeQuery(sql);
+            String theemail = null;
+            String passwordDB = null;
+            String name = null;
+            while (rs.next()) {
+
+                theemail = rs.getString("userName");
+                passwordDB = rs.getString("pass");
+                name = rs.getString("firstName");
+
+            }
+            if (email.equals(theemail) && theemail != null
+                    && password.equals(passwordDB) && passwordDB != null) {
+
+         
+                user[0] = true;
+                user[1] = name;
+
+            }
+
+            conn.close();
+
+        } catch (Exception e) {
+
+            System.out.println("isLogin: " + e);
+        }
+
+        return user;
+    }//End of isLogin
+    
+    //Update
+    //Create
+    //Delele
 }

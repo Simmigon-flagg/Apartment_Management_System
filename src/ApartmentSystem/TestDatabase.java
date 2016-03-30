@@ -15,12 +15,42 @@ public class TestDatabase {
     static Database db = new Database();
     
     public static void main(String[] args) {
-        ArrayList<Object> Applicant = new ArrayList<Object>();
-        Applicant = db.Person();
-        //Print All
+        ArrayList<Object> Applicant = new ArrayList<>();
+//        Applicant = db.PersonDB();
+//        //Print All
+//        for (Object Applicant1 : Applicant) {
+//            System.out.println("Person Data: " + Applicant1);
+//        }
+        
+      //  Applicant = db.allLocationAndPrice();
         for (Object Applicant1 : Applicant) {
-            System.out.println( Applicant1);
-        }
+            //System.out.println("Location Data: "+Applicant1);
+        }//price and location
+        
+        //Pre: username and password
+        Object[] login = new Object[2];
+      //  login = db.isLogin("admin@admin.com", "admin");
+        if ((boolean)login[0] == true) {
+        //    System.out.println("You are logged in as: " + login[1]);
+            
+        }//Post: username returned 
+        
+       // Applicant = db.getAllApplicant();
+        for (Object Applicant1 : Applicant) {
+         //   System.out.println("Applicate Data: "+Applicant1);
+        }//price and location 
+        
+      //    Applicant = db.allUser();
+        for (Object Applicant1 : Applicant) {
+           // System.out.println("Applicate Data: "+Applicant1);
+        }//User
+        
+        //findApplication
+        Applicant = db.getAlllApplication();
+          for (Object Applicant1 : Applicant) {
+           System.out.println("Application Data: "+Applicant1);
+        }//Applicant
+        
     }
 
 }
