@@ -53,7 +53,7 @@ public class ViewLogin extends javax.swing.JFrame {
         jPanel1.setAutoscrolls(true);
         jPanel1.setPreferredSize(new java.awt.Dimension(720, 420));
 
-        txtLogin.setText("forrestgump@gmail.com");
+        txtLogin.setText("admin@admin.com");
         txtLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLoginActionPerformed(evt);
@@ -69,7 +69,7 @@ public class ViewLogin extends javax.swing.JFrame {
             }
         });
 
-        txtpass.setText("1forrest1");
+        txtpass.setText("admin");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
