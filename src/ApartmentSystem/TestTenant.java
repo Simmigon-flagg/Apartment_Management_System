@@ -11,10 +11,8 @@ package ApartmentSystem;
  */
 public class TestTenant {
     public static void main(String[] args) {
-        try {
-            
-        } catch (Exception e) {
-        }
+     Tenant testtenant = new Tenant("1", "3", "253232353");
+     System.out.println(testtenant);
     }
            
     
