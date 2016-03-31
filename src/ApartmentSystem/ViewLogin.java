@@ -124,6 +124,7 @@ public class ViewLogin extends javax.swing.JFrame {
             home.setVisible(true);
             String userName = user[1].toString();
             System.out.println("The user is " + userName);
+            
         }
 
        // AptAppHome hom = new AptAppHome();
