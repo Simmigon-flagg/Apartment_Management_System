@@ -46,7 +46,7 @@ public class TestDatabase {
         }//User
         
         //findApplication
-        Applicant = db.getAlllApplication();
+        Applicant = db.getAllApplication();
           for (Object Applicant1 : Applicant) {
            System.out.println("Application Data: "+Applicant1);
         }//Applicant

@@ -5,15 +5,28 @@
  */
 package ApartmentSystem;
 
+import static ApartmentSystem.TestDatabase.db;
+import java.util.ArrayList;
+import java.util.LinkedList;
+
 /**
  *
  * @author Riley
  */
 public class TestTenant {
+
     public static void main(String[] args) {
-     Tenant testtenant = new Tenant("1", "3", "253232353");
-     System.out.println(testtenant);
+
+        Database tenantDatabase = new Database();
+       
+        
+        ArrayList tenant =  tenantDatabase.getTenant();
+        
+
+        for (Object tenant1 : tenant) {
+            System.out.println("From DB Tenant is : " + tenant1);
+        }
+
     }
-           
-    
+
 }

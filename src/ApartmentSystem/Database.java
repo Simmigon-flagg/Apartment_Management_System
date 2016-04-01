@@ -130,8 +130,8 @@ public class Database {
 
     }//end of getAllApplicant
 
-    public ArrayList<Object> getAlllApplication() {
-        ArrayList<Object> getAlllApplication = new ArrayList<>();
+    public ArrayList<Object> getAllApplication() {
+        ArrayList<Object> getAllApplication = new ArrayList<>();
 
         sql = "SELECT "
                 + "firstName,"
@@ -167,23 +167,23 @@ public class Database {
 
             while (rs.next()) {
 
-                getAlllApplication.add(rs.getString("firstName"));
-                getAlllApplication.add(rs.getString("lastName"));
-                getAlllApplication.add(rs.getString("userName"));
-                getAlllApplication.add(rs.getString("dateOfBirth"));
-                getAlllApplication.add(rs.getString("pass"));
-                getAlllApplication.add(rs.getString("accepted"));
-                getAlllApplication.add(rs.getString("socialSecurity"));
-                getAlllApplication.add(rs.getString("streetAddress"));
-                getAlllApplication.add(rs.getString("City"));
-                getAlllApplication.add(rs.getString("Zip"));
-                getAlllApplication.add(rs.getString("phoneNumber"));
-                getAlllApplication.add(rs.getString("employedBy"));
-                getAlllApplication.add(rs.getString("JobTitle"));
-                getAlllApplication.add(rs.getString("monthlyGrossPay"));
-                getAlllApplication.add(rs.getString("location"));
-                getAlllApplication.add(rs.getString("aptNumber"));
-                getAlllApplication.add(rs.getString("price"));
+                getAllApplication.add(rs.getString("firstName"));
+                getAllApplication.add(rs.getString("lastName"));
+                getAllApplication.add(rs.getString("userName"));
+                getAllApplication.add(rs.getString("dateOfBirth"));
+                getAllApplication.add(rs.getString("pass"));
+                getAllApplication.add(rs.getString("accepted"));
+                getAllApplication.add(rs.getString("socialSecurity"));
+                getAllApplication.add(rs.getString("streetAddress"));
+                getAllApplication.add(rs.getString("City"));
+                getAllApplication.add(rs.getString("Zip"));
+                getAllApplication.add(rs.getString("phoneNumber"));
+                getAllApplication.add(rs.getString("employedBy"));
+                getAllApplication.add(rs.getString("JobTitle"));
+                getAllApplication.add(rs.getString("monthlyGrossPay"));
+                getAllApplication.add(rs.getString("location"));
+                getAllApplication.add(rs.getString("aptNumber"));
+                getAllApplication.add(rs.getString("price"));
 
             }
 
@@ -194,7 +194,55 @@ public class Database {
             System.out.println("getAlllApplication: " + e);
         }
 
-        return getAlllApplication;
+        return getAllApplication;
+    }//End of getAlllApplication
+
+    public ArrayList<Object> getTenant() {
+        ArrayList<Object> getTenant = new ArrayList<>();
+
+        sql = "SELECT "
+                + "firstName,"
+                + "lastName,"
+                + "phoneNumber,"
+                + "location,"
+                + "aptNumber,"
+                + "numberOfBedrooms,"
+                + "price\n"
+                + "FROM user\n"
+                + "INNER JOIN applicant\n"
+                + "ON user.iduser=applicant.iduser\n"
+                + "INNER JOIN apartmentlocation\n"
+                + "ON applicant.iduser=apartmentlocation.iduser;";
+
+        try {
+
+            dbStatement = DatabaseConn().createStatement();
+
+            rs = dbStatement.executeQuery(sql);
+
+            while (rs.next()) {
+
+                getTenant.add(rs.getString("firstName"));
+                getTenant.add(rs.getString("lastName"));
+
+                getTenant.add(rs.getString("phoneNumber"));
+
+                getTenant.add(rs.getString("location"));
+                getTenant.add(rs.getString("aptNumber"));
+                getTenant.add(rs.getString("numberOfBedrooms"));
+
+                getTenant.add(rs.getString("price"));
+
+            }
+
+            conn.close();
+
+        } catch (Exception e) {
+
+            System.out.println("getAllApplication: " + e);
+        }
+
+        return getTenant;
     }//End of getAlllApplication
 
     public Object[] isLogin(String email, String password) {
@@ -223,7 +271,6 @@ public class Database {
             if (email.equals(theemail) && theemail != null
                     && password.equals(passwordDB) && passwordDB != null) {
 
-         
                 user[0] = true;
                 user[1] = name;
 
@@ -238,7 +285,7 @@ public class Database {
 
         return user;
     }//End of isLogin
-    
+
     //Update
     //Create
     //Delele
