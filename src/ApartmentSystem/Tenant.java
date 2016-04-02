@@ -114,7 +114,7 @@ public class Tenant {
 
     @Override
     public String toString() {
-        return "Tenant{" + "clientID=" + clientID + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + ", location=" + location + ", aptNumber=" + aptNumber + ", numberOfBedrooms=" + numberOfBedrooms + ", price=" + price + '}';
+        return  clientID + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + ", location=" + location + ", aptNumber=" + aptNumber + ", numberOfBedrooms=" + numberOfBedrooms + ", price=" + price + '}';
     }
 
 }

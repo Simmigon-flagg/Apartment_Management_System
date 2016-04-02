@@ -236,7 +236,7 @@ public class Database {
 
         } catch (Exception e) {
 
-            System.out.println("getAllApplication: " + e);
+            System.out.println("getTenant: " + e);
         }
 
         return getTenant;

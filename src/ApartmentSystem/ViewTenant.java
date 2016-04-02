@@ -6,6 +6,7 @@
 package ApartmentSystem;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -39,27 +40,39 @@ public class ViewTenant extends javax.swing.JPanel {
         this.txtFindFirstName = txtFindFirstName;
         this.txtFindLastName = txtFindLastName;
     }
-    
 
     public ViewTenant() {
         initComponents();
 
-        ArrayList tenant = data.getTenant();
+        ArrayList<Tenant> tenant = data.getTenant();
         Object[] myTenant = new Object[tenant.size()];
+
         for (int i = 0; i < tenant.size(); i++) {
-            myTenant[i] = tenant.get(i);
+            Tenant get = tenant.get(i);
+            myTenant[i] = tenant.get(i).getFirstName();
+
         }
-        int count = 0;
-        for (Object myTenant1 : myTenant) {
-             jTable1.setValueAt(myTenant, count, count);
-            count++;
-            System.out.print(myTenant1 + " ");
-            if (count == 7) {
-                System.out.println("");
-                count = 0;
+        System.out.println("These are the names: " + Arrays.toString(myTenant));
+
+        for (int i = 0; i < tenant.size(); i++) {
+            for (int j = 0; j < tenant.size(); j++) {
+
+               
+
             }
+
         }
-       
+//        int count = 0;
+//        for (Object myTenant1 : myTenant) {
+//           
+//            count++;
+//            System.out.print(myTenant1 + " ");
+//            if (count == 7) {
+//                System.out.println("");
+//                count = 0;
+//            }
+//        }
+
     }
 
     /**
