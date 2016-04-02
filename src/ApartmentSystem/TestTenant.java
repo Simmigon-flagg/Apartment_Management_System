@@ -7,6 +7,7 @@ package ApartmentSystem;
 
 import static ApartmentSystem.TestDatabase.db;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 
 /**
@@ -20,15 +21,22 @@ public class TestTenant {
         Database tenantDatabase = new Database();
 
         ArrayList tenant = tenantDatabase.getTenant();
-        int countiteration = 0;
-        for (Object tenant1 : tenant) {
-            System.out.println(countiteration + " From DB Tenant is : " + tenant1);
-            countiteration++;
-            if (countiteration == 7) {
-                countiteration = 0;
-                
-            }
 
+        Object[] myTenant = new Object[tenant.size()];
+
+        for (int i = 0; i < tenant.size(); i++) {
+            myTenant[i] = tenant.get(i);
+
+        }
+       
+        int count = 0;
+        for (Object myTenant1 : myTenant) {
+            count++;
+            System.out.print(myTenant1 + " ");
+            if (count == 7) {
+                System.out.println("");
+                count = 0;
+            }
         }
 
     }

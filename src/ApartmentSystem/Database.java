@@ -197,10 +197,11 @@ public class Database {
         return getAllApplication;
     }//End of getAlllApplication
 
-    public ArrayList<Object> getTenant() {
-        ArrayList<Object> getTenant = new ArrayList<>();
+    public ArrayList<Tenant> getTenant() {
+        ArrayList<Tenant> getTenant = new ArrayList<>();
 
         sql = "SELECT "
+                + "idapplicant,"
                 + "firstName,"
                 + "lastName,"
                 + "phoneNumber,"
@@ -221,18 +222,14 @@ public class Database {
             rs = dbStatement.executeQuery(sql);
 
             while (rs.next()) {
-
-                getTenant.add(rs.getString("firstName"));
-                getTenant.add(rs.getString("lastName"));
-
-                getTenant.add(rs.getString("phoneNumber"));
-
-                getTenant.add(rs.getString("location"));
-                getTenant.add(rs.getString("aptNumber"));
-                getTenant.add(rs.getString("numberOfBedrooms"));
-
-                getTenant.add(rs.getString("price"));
-
+                getTenant.add(new Tenant(rs.getString("idapplicant"),
+                        rs.getString("firstName"), 
+                        rs.getString("lastName"),
+                        rs.getString("phoneNumber"),
+                        rs.getString("location"),
+                        rs.getString("aptNumber"), 
+                        rs.getString("numberOfBedrooms"), 
+                        rs.getString("price")));
             }
 
             conn.close();

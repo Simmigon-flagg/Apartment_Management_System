@@ -5,6 +5,15 @@
  */
 package ApartmentSystem;
 
+import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
+
 /**
  *
  * @author Simmigon Flagg
@@ -14,8 +23,43 @@ public class ViewTenant extends javax.swing.JPanel {
     /**
      * Creates new form ViewTenant
      */
+    Database data = new Database();
+
+    public ViewTenant(JButton btnClear, JButton btnSearch, JLabel jLabel1, JLabel jLabel2, JPanel jPanel1, JScrollPane jScrollPane1, JScrollPane jScrollPane2, JTabbedPane jTabbedPane1, JTable jTable1, JTable tblTenants, JTextField txtFindFirstName, JTextField txtFindLastName) {
+        this.btnClear = btnClear;
+        this.btnSearch = btnSearch;
+        this.jLabel1 = jLabel1;
+        this.jLabel2 = jLabel2;
+        this.jPanel1 = jPanel1;
+        this.jScrollPane1 = jScrollPane1;
+        this.jScrollPane2 = jScrollPane2;
+        this.jTabbedPane1 = jTabbedPane1;
+        this.jTable1 = jTable1;
+        this.tblTenants = tblTenants;
+        this.txtFindFirstName = txtFindFirstName;
+        this.txtFindLastName = txtFindLastName;
+    }
+    
+
     public ViewTenant() {
         initComponents();
+
+        ArrayList tenant = data.getTenant();
+        Object[] myTenant = new Object[tenant.size()];
+        for (int i = 0; i < tenant.size(); i++) {
+            myTenant[i] = tenant.get(i);
+        }
+        int count = 0;
+        for (Object myTenant1 : myTenant) {
+             jTable1.setValueAt(myTenant, count, count);
+            count++;
+            System.out.print(myTenant1 + " ");
+            if (count == 7) {
+                System.out.println("");
+                count = 0;
+            }
+        }
+       
     }
 
     /**
@@ -30,6 +74,8 @@ public class ViewTenant extends javax.swing.JPanel {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblTenants = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         txtFindFirstName = new javax.swing.JTextField();
@@ -58,6 +104,21 @@ public class ViewTenant extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         jTabbedPane1.addTab("Find", jScrollPane1);
+
+        tblTenants.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tblTenants);
+
+        jTabbedPane1.addTab("Tenants", jScrollPane2);
 
         jLabel1.setText("First:");
 
@@ -154,8 +215,10 @@ public class ViewTenant extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblTenants;
     private javax.swing.JTextField txtFindFirstName;
     private javax.swing.JTextField txtFindLastName;
     // End of variables declaration//GEN-END:variables

@@ -108,10 +108,13 @@ public class Tenant {
         this.price = price;
     }
 
+    public void size() {
+        
+    }
+
     @Override
     public String toString() {
         return "Tenant{" + "clientID=" + clientID + ", firstName=" + firstName + ", lastName=" + lastName + ", phoneNumber=" + phoneNumber + ", location=" + location + ", aptNumber=" + aptNumber + ", numberOfBedrooms=" + numberOfBedrooms + ", price=" + price + '}';
     }
-    
 
 }

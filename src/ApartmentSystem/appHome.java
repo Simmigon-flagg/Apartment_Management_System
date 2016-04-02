@@ -6,6 +6,7 @@
 package ApartmentSystem;
 
 import java.awt.CardLayout;
+import java.util.ArrayList;
 
 public class appHome extends javax.swing.JFrame {
 
@@ -13,16 +14,21 @@ public class appHome extends javax.swing.JFrame {
      * Creates new form appHome
      */
     AppController controller = new AppController();
+    Database data = new Database();
 
     public appHome() {
         initComponents();
+        //Fill a large Data Structure with info from the database
+        
+
+      
     }
 
     public void Controller() {
-        Database data = new Database();
+
         //  ViewLogin view = new ViewLogin();
         if (true) {
-      //      CardLayout cardView = (CardLayout)card.getLayout();
+            //      CardLayout cardView = (CardLayout)card.getLayout();
             //     cardView.show(card, "card Application");
 
         }
@@ -166,7 +172,6 @@ public class appHome extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 
-               
                 new appHome().setVisible(true);
             }
         });
@@ -183,4 +188,3 @@ public class appHome extends javax.swing.JFrame {
     private ApartmentSystem.ViewTenant viewTenant1;
     // End of variables declaration//GEN-END:variables
 }
-
