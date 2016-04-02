@@ -201,7 +201,7 @@ public class Database {
         ArrayList<Tenant> getTenant = new ArrayList<>();
 
         sql = "SELECT "
-                + "idapplicant,"
+          
                 + "firstName,"
                 + "lastName,"
                 + "phoneNumber,"
@@ -223,12 +223,12 @@ public class Database {
 
             while (rs.next()) {
                 getTenant.add(new Tenant(rs.getString("idapplicant"),
-                        rs.getString("firstName"), 
+                        rs.getString("firstName"),
                         rs.getString("lastName"),
                         rs.getString("phoneNumber"),
                         rs.getString("location"),
-                        rs.getString("aptNumber"), 
-                        rs.getString("numberOfBedrooms"), 
+                        rs.getString("aptNumber"),
+                        rs.getString("numberOfBedrooms"),
                         rs.getString("price")));
             }
 
@@ -282,6 +282,35 @@ public class Database {
 
         return user;
     }//End of isLogin
+
+    public ResultSet TableUSer() {
+        sql = "SELECT * FROM user;";
+        ResultSet temp;
+        ArrayList<Object> person = new ArrayList<>();
+        try {
+
+            dbStatement = DatabaseConn().createStatement();
+
+            rs = dbStatement.executeQuery(sql);
+            temp = rs;
+            while (rs.next()) {
+                person.add(rs.getInt("iduser"));
+                person.add(rs.getString("firstName"));
+                person.add(rs.getString("lastName"));
+                person.add(rs.getString("userName"));
+                person.add(rs.getString("dateOfBirth"));
+                person.add(rs.getString("pass"));
+            }
+
+            conn.close();
+
+        } catch (Exception e) {
+            System.out.println("getAllUser: " + e);
+            return null;
+        }
+        return temp;
+
+    }//End of getAllUser
 
     //Update
     //Create

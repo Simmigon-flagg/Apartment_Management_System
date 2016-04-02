@@ -5,15 +5,14 @@
  */
 package ApartmentSystem;
 
+import static ApartmentSystem.Database.DatabaseConn;
+import static ApartmentSystem.Database.conn;
+import com.mysql.jdbc.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Arrays;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTabbedPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -24,55 +23,44 @@ public class ViewTenant extends javax.swing.JPanel {
     /**
      * Creates new form ViewTenant
      */
-    Database data = new Database();
-
-    public ViewTenant(JButton btnClear, JButton btnSearch, JLabel jLabel1, JLabel jLabel2, JPanel jPanel1, JScrollPane jScrollPane1, JScrollPane jScrollPane2, JTabbedPane jTabbedPane1, JTable jTable1, JTable tblTenants, JTextField txtFindFirstName, JTextField txtFindLastName) {
-        this.btnClear = btnClear;
-        this.btnSearch = btnSearch;
-        this.jLabel1 = jLabel1;
-        this.jLabel2 = jLabel2;
-        this.jPanel1 = jPanel1;
-        this.jScrollPane1 = jScrollPane1;
-        this.jScrollPane2 = jScrollPane2;
-        this.jTabbedPane1 = jTabbedPane1;
-        this.jTable1 = jTable1;
-        this.tblTenants = tblTenants;
-        this.txtFindFirstName = txtFindFirstName;
-        this.txtFindLastName = txtFindLastName;
-    }
+    Connection conn = null;
+    ResultSet rs = null;
+    PreparedStatement pst = null;
 
     public ViewTenant() {
         initComponents();
+        conn = (Connection) DatabaseConn();
+        table();
 
-        ArrayList<Tenant> tenant = data.getTenant();
-        Object[] myTenant = new Object[tenant.size()];
+    }
 
-        for (int i = 0; i < tenant.size(); i++) {
-            Tenant get = tenant.get(i);
-            myTenant[i] = tenant.get(i).getFirstName();
+    private void table() {
+        String sql;
+          sql = "SELECT "
+          
+                + "firstName,"
+                + "lastName,"
+                + "phoneNumber,"
+                + "location,"
+                + "aptNumber,"
+                + "numberOfBedrooms,"
+                + "price\n"
+                + "FROM user\n"
+                + "INNER JOIN applicant\n"
+                + "ON user.iduser=applicant.iduser\n"
+                + "INNER JOIN apartmentlocation\n"
+                + "ON applicant.iduser=apartmentlocation.iduser;";
+
+        try {
+
+            pst = conn.prepareStatement(sql);
+            rs = pst.executeQuery();
+            tblTenants.setModel(DbUtils.resultSetToTableModel(rs));
+
+        } catch (Exception e) {
+            System.out.println("user: " + e);
 
         }
-        System.out.println("These are the names: " + Arrays.toString(myTenant));
-
-        for (int i = 0; i < tenant.size(); i++) {
-            for (int j = 0; j < tenant.size(); j++) {
-
-               
-
-            }
-
-        }
-//        int count = 0;
-//        for (Object myTenant1 : myTenant) {
-//           
-//            count++;
-//            System.out.print(myTenant1 + " ");
-//            if (count == 7) {
-//                System.out.println("");
-//                count = 0;
-//            }
-//        }
-
     }
 
     /**
