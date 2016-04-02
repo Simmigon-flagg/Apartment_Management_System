@@ -45,6 +45,9 @@ public class ViewTenant extends javax.swing.JPanel {
                 + "aptNumber,"
                 + "numberOfBedrooms,"
                 + "price\n"
+                  
+                  
+                  
                 + "FROM user\n"
                 + "INNER JOIN applicant\n"
                 + "ON user.iduser=applicant.iduser\n"
@@ -56,11 +59,14 @@ public class ViewTenant extends javax.swing.JPanel {
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             tblTenants.setModel(DbUtils.resultSetToTableModel(rs));
+            conn.close();
 
         } catch (Exception e) {
             System.out.println("user: " + e);
+           
 
         }
+        
     }
 
     /**
@@ -114,9 +120,10 @@ public class ViewTenant extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Tenants", "Title 3", "Title 4"
             }
         ));
+        tblTenants.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tblTenants);
 
         jTabbedPane1.addTab("Tenants", jScrollPane2);
