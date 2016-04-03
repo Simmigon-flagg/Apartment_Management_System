@@ -5,68 +5,17 @@
  */
 package ApartmentSystem;
 
-import static ApartmentSystem.Database.DatabaseConn;
-import static ApartmentSystem.Database.conn;
-import com.mysql.jdbc.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.Arrays;
-import net.proteanit.sql.DbUtils;
-
 /**
  *
  * @author Simmigon Flagg
  */
-public class ViewTenant extends javax.swing.JPanel {
+public class AdminView extends javax.swing.JPanel {
 
     /**
-     * Creates new form ViewTenant
+     * Creates new form AdminView
      */
-    Connection conn = null;
-    ResultSet rs = null;
-    PreparedStatement pst = null;
-
-    public ViewTenant() {
+    public AdminView() {
         initComponents();
-        conn = (Connection) DatabaseConn();
-        table();
-
-    }
-
-    private void table() {
-        String sql;
-          sql = "SELECT "
-          
-                + "firstName as 'FIRST NAME',"
-                + "lastName as 'LAST NAME',"
-                + "phoneNumber as 'PHONE NUMBER',"
-                + "location as 'LOCATION',"
-                + "aptNumber as 'APARTMENT NUMBER',"
-                + "numberOfBedrooms as 'BEDROOMS',"
-                + "price as 'RENT' \n"
-                  
-                  
-                  
-                + "FROM user\n"
-                + "INNER JOIN applicant\n"
-                + "ON user.iduser=applicant.iduser\n"
-                + "INNER JOIN apartmentlocation\n"
-                + "ON applicant.iduser=apartmentlocation.iduser;";
-
-        try {
-
-            pst = conn.prepareStatement(sql);
-            rs = pst.executeQuery();
-            tblTenants.setModel(DbUtils.resultSetToTableModel(rs));
-            conn.close();
-
-        } catch (Exception e) {
-            System.out.println("user: " + e);
-           
-
-        }
-        
     }
 
     /**
@@ -91,14 +40,8 @@ public class ViewTenant extends javax.swing.JPanel {
         btnClear = new javax.swing.JButton();
         txtFindLastName = new javax.swing.JTextField();
 
-        setMaximumSize(null);
-        setOpaque(false);
-        setPreferredSize(new java.awt.Dimension(700, 400));
-
         jTabbedPane1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(44, 105));
-
-        jScrollPane1.setOpaque(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -111,12 +54,9 @@ public class ViewTenant extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.setOpaque(false);
         jScrollPane1.setViewportView(jTable1);
 
         jTabbedPane1.addTab("Find", jScrollPane1);
-
-        jScrollPane2.setOpaque(false);
 
         tblTenants.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,9 +72,7 @@ public class ViewTenant extends javax.swing.JPanel {
         tblTenants.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(tblTenants);
 
-        jTabbedPane1.addTab("Tenants", jScrollPane2);
-
-        jPanel1.setOpaque(false);
+        jTabbedPane1.addTab("Employee", jScrollPane2);
 
         jLabel1.setText("First:");
 
@@ -172,11 +110,8 @@ public class ViewTenant extends javax.swing.JPanel {
                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnClear)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jPanel1Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnClear, btnSearch});
-
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -205,7 +140,7 @@ public class ViewTenant extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(47, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)

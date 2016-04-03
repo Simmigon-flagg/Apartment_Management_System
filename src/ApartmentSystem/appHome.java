@@ -61,14 +61,18 @@ public class appHome extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         card.setBackground(new java.awt.Color(0, 0, 0));
-        card.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        card.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        card.setOpaque(false);
         card.setLayout(new java.awt.CardLayout());
+
+        viewTenant1.setOpaque(false);
         card.add(viewTenant1, "Tenant");
         card.add(viewApplication1, "Applicant");
 
         jPanel2.add(card, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 720, 420));
 
         jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 5));
+        jPanel6.setOpaque(false);
 
         jButton1.setText("Tenant");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -111,7 +115,6 @@ public class appHome extends javax.swing.JFrame {
         jPanel2.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 480, 720, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ApartmentSystem/appBackground.jpg"))); // NOI18N
-        jLabel1.setPreferredSize(new java.awt.Dimension(955, 537));
         jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
