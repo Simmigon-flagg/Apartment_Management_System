@@ -117,6 +117,7 @@ public class ViewLogin extends javax.swing.JFrame {
     private void btnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClearActionPerformed
         //remove this later
         Database login = new Database();
+        
         Object[] user = login.isLogin(txtLogin.getText(), txtpass.getText());
         if ((boolean)user[0]) {
             this.setVisible(false);
