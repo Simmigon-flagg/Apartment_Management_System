@@ -8,15 +8,15 @@ package ApartmentSystem;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 
-public class appHome extends javax.swing.JFrame {
+public class AppHome extends javax.swing.JFrame {
 
     /**
-     * Creates new form appHome
+     * Creates new form AppHome
      */
     AppController controller = new AppController();
     Database data = new Database();
 
-    public appHome() {
+    public AppHome() {
         initComponents();
         //Fill a large Data Structure with info from the database
         
@@ -54,6 +54,7 @@ public class appHome extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setAlwaysOnTop(true);
         setMinimumSize(null);
         setResizable(false);
         setSize(new java.awt.Dimension(0, 0));
@@ -64,8 +65,6 @@ public class appHome extends javax.swing.JFrame {
         card.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         card.setOpaque(false);
         card.setLayout(new java.awt.CardLayout());
-
-        viewTenant1.setOpaque(false);
         card.add(viewTenant1, "Tenant");
         card.add(viewApplication1, "Applicant");
 
@@ -161,21 +160,22 @@ public class appHome extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(appHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AppHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(appHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AppHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(appHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AppHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(appHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AppHome.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
 
-                new appHome().setVisible(true);
+                new AppHome().setVisible(true);
             }
         });
     }
