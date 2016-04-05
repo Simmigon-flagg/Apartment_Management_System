@@ -50,3 +50,5 @@ Temporary Items
 *.class
 *.properties
 *.xml
+*.form
+*.rs
