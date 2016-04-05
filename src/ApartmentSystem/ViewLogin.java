@@ -10,7 +10,7 @@ import java.awt.CardLayout;
 public class ViewLogin extends javax.swing.JFrame {
 
     /**
-     * Creates new form appHome
+     * Creates new form AppHome
      */
     AppController controller = new AppController();
 
@@ -121,7 +121,7 @@ public class ViewLogin extends javax.swing.JFrame {
         Object[] user = login.isLogin(txtLogin.getText(), txtpass.getText());
         if ((boolean)user[0]) {
             this.setVisible(false);
-            appHome home = new appHome();
+            AppHome home = new AppHome();
             home.setVisible(true);
             String userName = user[1].toString();
             System.out.println("The user is " + userName);
