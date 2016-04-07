@@ -52,3 +52,6 @@ Temporary Items
 *.xml
 *.form
 *.rs
+/nbproject/private/
+/build/
+*.properties
