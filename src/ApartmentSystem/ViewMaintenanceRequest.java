@@ -96,7 +96,7 @@ public class ViewMaintenanceRequest extends javax.swing.JPanel {
 
         jButton2.setText("Clear");
 
-        jButton3.setText("jButton3");
+        jButton3.setText("Save");
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 0));
 

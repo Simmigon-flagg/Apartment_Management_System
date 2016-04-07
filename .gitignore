@@ -56,3 +56,7 @@ Temporary Items
 /build/
 *.properties
 *.properties
+*.properties
+build/classes/ApartmentSystem/AppController.class
+*.class
+*.properties
