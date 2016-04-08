@@ -46,7 +46,6 @@ public class AppHome extends javax.swing.JFrame {
 
         jPanel2 = new javax.swing.JPanel();
         card = new javax.swing.JPanel();
-        viewTenant1 = new ApartmentSystem.ViewTenant();
         viewApplication1 = new ApartmentSystem.ViewApplication();
         jPanel6 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -65,7 +64,6 @@ public class AppHome extends javax.swing.JFrame {
         card.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         card.setOpaque(false);
         card.setLayout(new java.awt.CardLayout());
-        card.add(viewTenant1, "Tenant");
         card.add(viewApplication1, "Applicant");
 
         jPanel2.add(card, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 720, 420));
@@ -190,6 +188,5 @@ public class AppHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
     private ApartmentSystem.ViewApplication viewApplication1;
-    private ApartmentSystem.ViewTenant viewTenant1;
     // End of variables declaration//GEN-END:variables
 }
